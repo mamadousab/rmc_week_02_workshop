@@ -1,7 +1,0 @@
-"0","# Filter the dataset to include only the three countries chosen by your group."
-"0","data_ncd_mini <- data_ncd %>% "
-"0","  rename("
-"0","    Country = Entity,"
-"0","    DALYs_lost = `DALYs (Disability-Adjusted Life Years) - Non-communicable diseases - Sex: Both - Age: Age-standardized (Rate)`) %>% "
-"0","  filter(Country %in% c(""Brazil"", ""Uganda"", ""Guinea""))"
-"0","print(data_ncd_mini)"
