@@ -1,0 +1,2 @@
+"0"," # View the pivoted data frame"
+"0","print(kable(pivoted_df, caption = ""DALY Burden Over Time for Brazil, Uganda, and Guinea""))"
