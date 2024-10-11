@@ -1,6 +1,7 @@
 # Non-Communicable Disease Burden (NCD)
 
-```{r}
+```{r setup, include = FALSE}
+knitr::opts_chunk$set (warning = FALSE, message = FALSE, echo= FALSE)
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
 
