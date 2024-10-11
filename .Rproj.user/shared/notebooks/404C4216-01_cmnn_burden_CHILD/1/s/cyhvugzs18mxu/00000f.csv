@@ -1,0 +1,12 @@
+"0","# Here render a table for the DALY burden over time for the three countries.
+# You should pivot the data wider to show each country in a separate column.
+data_cmnn_wide <- data_cmnn_mini2 %>%
+  pivot_wider(Country,Year, DALYslost) 
+"
+"1","[1m[33mError[39m in `pivot_wider()`:[22m
+[33m![39m Can't select columns that don't exist.
+[31m✖[39m Column `name` doesn't exist.
+Backtrace:
+[90m 1. [39mdata_cmnn_mini2 %>% pivot_wider(Country, Year, DALYslost)
+[90m 3. [39m[1m[94mtidyr:::pivot_wider.data.frame([39m[22m., Country, Year, DALYslost[1m[94m)[39m[22m
+"
