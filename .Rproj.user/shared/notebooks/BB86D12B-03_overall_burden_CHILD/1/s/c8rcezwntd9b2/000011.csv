@@ -1,0 +1,11 @@
+"0","# Filter the dataset to include only the three countries chosen by your group.
+data_overall_mini <- filter(data_overall,country %in% c(""Brazil"",""Uganda"",""Guinea""))
+"
+"1","[1m[33mError[39m in `filter()`:[22m
+[38;5;232m[36mℹ[38;5;232m In argument: `country %in% c(""Brazil"", ""Uganda"", ""Guinea"")`.[39m
+[1mCaused by error:[22m
+[33m![39m object 'country' not found
+Backtrace:
+[90m 1. [39m[1mdplyr[22m::filter(...)
+[90m 8. [39mcountry %in% c(""Brazil"", ""Uganda"", ""Guinea"")
+"

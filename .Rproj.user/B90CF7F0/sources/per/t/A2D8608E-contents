@@ -1,0 +1,80 @@
+# Overall Disease Burden
+
+```{r}
+# Load necessary packages
+pacman::p_load(tidyverse, knitr, here)
+
+# Import the overall disease data
+
+data_overall <- read_csv(here("data/burden-of-disease-all-causes.csv"))
+
+view(data_overall)
+
+#Rename Entity and DALYs exclude code
+
+
+data_overall<-data_overall %>% rename (country=Entity)
+
+data_overall %>% rename(DALYs=`DALYs (Disability-Adjusted Life Years) - All causes - Sex: Both - Age: Age-standardized (Rate)`)%>% select(-Code)
+
+
+
+
+
+```
+
+```{r}
+# Filter the dataset to include only the three countries chosen by your group.
+data_overall_mini <- filter(data_overall,Entity %in% c("Brazil","Uganda","Guinea"))
+view(data_overall_mini)
+
+```
+
+## Table of Estimates for Overall Disease Burden Over Time
+
+```{r}
+# Here render a table for the DALY burden over time for the three countries. 
+# You should pivot the data wider to show each country in a separate column.
+
+data_overall_wide <- pivot_wider(data_overall_mini,names_from = Entity,values_from = Year)
+
+view(data_overall_wide)
+# Use kable() from the knitr package to render the table.
+kable(data_overall_wide)
+```
+
+## Plot Showing Trends in Overall Disease Burden Over Time
+
+```{r}
+# Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
+# NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
+
+
+plotly::ggplotly()
+Library(ggplot2)
+
+ ggplot(data_cmnn_long, aes(x = Year, y = Value, color = Entity)) +
+  geom_line(size = 1.2) +  # Line thickness for better visibility
+  labs( 
+       x = "Year", y = "DALYslost", 
+       color = "Entity") +
+  theme_minimal()
+
+ 
+  ggplot(filtered_df, aes(x = Year, y = DALYs_lost, color = Country)) +
+  geom_line(size = 1) +
+  labs(title = "Trend of DALYs Burden Over Time",
+       x = "Year",
+       y = "DALY Burden (Age-standardized Rate)",
+       color = "Country") +
+  theme_minimal()
+
+   ```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo=FALSE) 
+```
+
+```
+
+## Summary of Overall Disease Burden Findings
+
+Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
