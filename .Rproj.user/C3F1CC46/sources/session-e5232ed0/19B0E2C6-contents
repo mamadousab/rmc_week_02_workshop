@@ -1,16 +1,31 @@
 # Overall Disease Burden
 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set (warning = FALSE, message = FALSE, echo= FALSE)
+```
+
+
+
 ```{r}
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
 
 # Import the overall disease data
+
 data_overall <- read_csv(here("data/burden-of-disease-all-causes.csv"))
+
 ```
 
 ```{r}
 # Filter the dataset to include only the three countries chosen by your group.
-data_overall_mini <- "WRITE_YOUR_CODE_HERE"
+
+data_overall_mini <- data_overall %>% 
+  rename(
+    Country = Entity,
+    DALYs_lost = `DALYs (Disability-Adjusted Life Years) - All causes - Sex: Both - Age: Age-standardized (Rate)`) %>% 
+  filter(Country %in% c("Brazil", "Uganda", "Guinea"))
+
 ```
 
 ## Table of Estimates for Overall Disease Burden Over Time
@@ -18,8 +33,21 @@ data_overall_mini <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here render a table for the DALY burden over time for the three countries. 
 # You should pivot the data wider to show each country in a separate column.
-data_overall_wide <- "WRITE_YOUR_CODE_HERE"
-# Use kable() from the knitr package to render the table.
+
+library(dplyr)
+library(knitr)
+
+# Select the three variables
+data_overall_wide <- data_overall_mini %>%
+  select(Year, Country, DALYs_lost)
+pivoted_df <- data_overall_wide %>%
+pivot_wider(names_from = Country, values_from = DALYs_lost)
+
+# Render the table using kable
+kable(pivoted_df, caption = "DALY Burden Over Time for Selected Countries")
+# View the pivoted data frame
+#print(kable(pivoted_df, caption = "DALY Burden Over Time for Brazil, Uganda, and Guinea"))
+
 ```
 
 ## Plot Showing Trends in Overall Disease Burden Over Time
@@ -27,8 +55,21 @@ data_overall_wide <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
 # NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
+filtered_df <-data_overall_mini %>%
+  filter(Country %in% c("Brazil", "Uganda", "Guinea"))
+
+# Create the line plot
+ggplot(filtered_df, aes(x = Year, y = DALYs_lost, color = Country)) +
+  geom_line(size = 1) +
+  labs(title = "Trend of DALYs Burden Over Time",
+       x = "Year",
+       y = "DALY Burden (Age-standardized Rate)",
+       color = "Country") +
+  theme_minimal()
+
 ```
 
 ## Summary of Overall Disease Burden Findings
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+Overall, the findings reveal a downward trend in disability adjusted life years for overall burden of disease with Brazil having the least DALYs.
+Interestingly, while Guinea had less DALYs than Uganda before 2010, Uganda has surpased Guinea with lower DALYs. This could be attributed to political stability, economic growth and good implementation of health policies.

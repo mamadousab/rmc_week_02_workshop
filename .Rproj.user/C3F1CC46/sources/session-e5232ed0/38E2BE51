@@ -1,26 +1,26 @@
 {
-    "id": "19B0E2C6",
+    "id": "38E2BE51",
     "path": "C:/Users/Lenovo/Desktop/APH/Graph Course October-December 2024/R Masterclass Oct-Dec 2024/Week2/rmc_week_02_workshop/rmd/03_overall_burden_CHILD.Rmd",
     "project_path": "rmd/03_overall_burden_CHILD.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "695307129",
     "contents": "",
     "dirty": false,
-    "created": 1728742759218.0,
+    "created": 1728743678311.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 3,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "3,25",
+        "cursorPosition": "0,24",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1728552382,
+    "lastKnownWriteTime": 1728748665,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1728552382,
+    "last_content_update": 1728748665777,
     "read_only": false,
     "read_only_alternatives": []
 }
