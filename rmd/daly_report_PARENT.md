@@ -1,6 +1,7 @@
 Global Disease Burden Analysis
 ================
-Mamadou Saidou Alareny Baldé, Carola Salas, Margaret Nagawa
+Mamadou Saidou Alareny Baldé (Guinea), Carola Salas (Brazil), Margaret
+Nagawa(Uganda)
 
 # Introduction
 
