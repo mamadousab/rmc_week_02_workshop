@@ -1,0 +1,9 @@
+"0"," ggplot(data_cmnn_long, aes(x = Year, y = Value, color = Country)) +
+  geom_line(size = 1.2) +  # Line thickness for better visibility
+  labs( 
+       x = ""Year"", y = ""DALYslost"", 
+       color = ""Country"") +
+  theme_minimal()
+"
+"2","Error: object 'data_cmnn_long' not found
+"
