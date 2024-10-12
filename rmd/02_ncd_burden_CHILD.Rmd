@@ -1,16 +1,24 @@
 # Non-Communicable Disease Burden (NCD)
 
-```{r}
+```{r setup, include = FALSE}
+knitr::opts_chunk$set (warning = FALSE, message = FALSE, echo= FALSE)
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
 
 # Import the non-communicable diseases data
 data_ncd <- read_csv(here("data/burden-of-disease-ncd.csv"))
+
 ```
 
 ```{r}
 # Filter the dataset to include only the three countries chosen by your group.
-data_ncd_mini <- "WRITE_YOUR_CODE_HERE"
+data_ncd_mini <- data_ncd %>% 
+  rename(
+    Country = Entity,
+    DALYs_lost = `DALYs (Disability-Adjusted Life Years) - Non-communicable diseases - Sex: Both - Age: Age-standardized (Rate)`) %>% 
+  filter(Country %in% c("Brazil", "Uganda", "Guinea"))
+
+
 ```
 
 ## Table of Estimates for NCD Burden Over Time
@@ -18,17 +26,49 @@ data_ncd_mini <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here render a table for the DALY burden over time for the three countries. 
 # You should pivot the data wider to show each country in a separate column.
-data_ncd_wide <- "WRITE_YOUR_CODE_HERE"
-# Use kable() from the knitr package to render the table.
+# Filter the data frame for the specified countries
+
+library(dplyr)
+library(knitr)
+
+# Select the three variables
+data_ncd_wide <- data_ncd_mini %>%
+  select(Year, Country, DALYs_lost)
+pivoted_df <- data_ncd_wide %>%
+pivot_wider(names_from = Country, values_from = DALYs_lost)
+
+# Render the table using kable
+kable(pivoted_df, caption = "DALY Burden Over Time for Selected Countries")
+# View the pivoted data frame
+#print(kable(pivoted_df, caption = "DALY Burden Over Time for Brazil, Uganda, and Guinea"))
+
 ```
 
 ## Plot Showing Trends in NCD Burden Over Time
 
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
+
+# Filter the data frame for the specified countries
+filtered_df <- data_ncd_mini %>%
+  filter(Country %in% c("Brazil", "Uganda", "Guinea"))
+
+# Create the line plot
+ggplot(filtered_df, aes(x = Year, y = DALYs_lost, color = Country)) +
+  geom_line(size = 1) +
+  labs(title = "Trend of DALYs Burden Over Time",
+       x = "Year",
+       y = "DALY Burden (Age-standardized Rate)",
+       color = "Country") +
+  theme_minimal()
+
+
 # NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
 ```
 
 ## Summary of NCD Burden Findings
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+Regarding the findings from database DALYs (Disability-Adjusted Life Years) about non communicable diseases. This has reduced steadily for the largest country in South American country as Brazil since 1990.
+Regarding the two African countries, we found that Uganda picked the values between 1990 and early 2000s, to follow a trend to reduction since then until 2010, with a minor increase to resume the trend of reduction.
+This observation is not the same for Guinea that has kept a regular trend to high values across the time. 
+
