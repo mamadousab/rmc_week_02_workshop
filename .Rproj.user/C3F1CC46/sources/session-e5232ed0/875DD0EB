@@ -1,19 +1,19 @@
 {
-    "id": "0126E868",
-    "path": "C:/Users/Lenovo/Desktop/APH/Graph Course October-December 2024/R Masterclass Oct-Dec 2024/Week2/rmc_week_02_workshop/rmd/daly_report_PARENT.Rmd",
-    "project_path": "rmd/daly_report_PARENT.Rmd",
+    "id": "875DD0EB",
+    "path": "C:/Users/Lenovo/Desktop/APH/Graph Course October-December 2024/R Masterclass Oct-Dec 2024/Week2/rmc_week_02_workshop/rmc_week_02_instructions.Rmd",
+    "project_path": "rmc_week_02_instructions.Rmd",
     "type": "r_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1728627021125.0,
+    "created": 1728743081159.0,
     "source_on_save": false,
-    "relative_order": 8,
+    "relative_order": 2,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "12,79",
-        "scrollLine": "5"
+        "cursorPosition": "139,131",
+        "scrollLine": "125"
     },
     "folds": "",
     "lastKnownWriteTime": 1728552382,
